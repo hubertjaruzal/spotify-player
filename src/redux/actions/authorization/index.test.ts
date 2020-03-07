@@ -5,11 +5,13 @@ import {
   refreshAccessToken,
   refreshAccessTokenSuccess,
   refreshAccessTokenFailure,
+  resetAccessToken,
 } from "./index";
 
 
 describe("Authorize actions", () => {
   // Authorize
+
   it("should return AUTHORIZE action", () => {
     const payload = {
       code: "1234",
@@ -28,9 +30,7 @@ describe("Authorize actions", () => {
     };
     const expectedAction = {
       type: "AUTHORIZE_SUCCESS",
-      payload: {
-        access_token: "1234",
-      },
+      payload,
     };
 
     expect(authorizeSuccess(payload)).toEqual(expectedAction);
@@ -45,6 +45,7 @@ describe("Authorize actions", () => {
   });
 
   // Refresh Access Token
+
   it("should return REFRESH_ACCESS_TOKEN action", () => {
     const expectedAction = {
       type: "REFRESH_ACCESS_TOKEN",
@@ -59,9 +60,7 @@ describe("Authorize actions", () => {
     };
     const expectedAction = {
       type: "REFRESH_ACCESS_TOKEN_SUCCESS",
-      payload: {
-        access_token: "1234",
-      },
+      payload,
     };
 
     expect(refreshAccessTokenSuccess(payload)).toEqual(expectedAction);
@@ -73,5 +72,15 @@ describe("Authorize actions", () => {
     };
 
     expect(refreshAccessTokenFailure()).toEqual(expectedAction);
+  });
+
+  // Other
+
+  it("should return RESET_ACCESS_TOKEN action", () => {
+    const expectedAction = {
+      type: "RESET_ACCESS_TOKEN",
+    };
+
+    expect(resetAccessToken()).toEqual(expectedAction);
   });
 });

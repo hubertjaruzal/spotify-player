@@ -10,6 +10,27 @@
 
   .content {
     display: flex;
+    flex-direction: column;
     flex: 1;
+    position: relative;
+    max-height: calc(100vh - 90px);
+    max-width: calc(100vw - 230px);
+  }
+
+  .loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: $black;
+
+    svg {
+      font-size: 28px;
+      color: $main-color;
+    }
   }
 }

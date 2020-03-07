@@ -1,0 +1,38 @@
+@import "../../../../variables.scss";
+
+.header {
+  color: white;
+  font-weight: 600;
+  margin: 10px 20px;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+
+  img {
+    width: 200px;
+    height: 200px;
+  }
+
+  > li {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $black;
+
+    svg {
+      width: 120px;
+      height: 120px;
+      background: $onyx-black;
+      border-radius: 100px;
+      path {
+        fill: white;
+      }
+    }
+  }
+}

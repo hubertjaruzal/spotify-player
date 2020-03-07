@@ -48,4 +48,12 @@ describe("authorization reducer", () => {
       authorization(initialState, { type: "REFRESH_ACCESS_TOKEN_FAILURE" }),
     ).toEqual(initialState);
   });
+
+  // Other
+
+  it("should handle RESET_ACCESS_TOKEN", () => {
+    expect(
+      authorization({ access_token: "123" }, { type: "RESET_ACCESS_TOKEN" }),
+    ).toEqual(initialState);
+  });
 });

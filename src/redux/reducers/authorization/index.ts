@@ -19,6 +19,7 @@ export const authorization = (state = initialState, action: actionModel) => {
       };
     case "AUTHORIZE_FAILURE":
     case "REFRESH_ACCESS_TOKEN_FAILURE":
+    case "RESET_ACCESS_TOKEN":
       return initialState;
     default:
       return state;

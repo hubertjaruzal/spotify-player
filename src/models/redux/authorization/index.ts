@@ -61,3 +61,15 @@ export interface refreshAccessTokenSuccessAction {
 export interface refreshAccessTokenFailureAction {
   type: typeof REFRESH_ACCESS_TOKEN_FAILURE;
 };
+
+// Other
+
+const RESET_ACCESS_TOKEN = "RESET_ACCESS_TOKEN";
+
+export interface resetAccessToken {
+  (): any;
+};
+
+export interface resetAccessTokenAction {
+  type: typeof RESET_ACCESS_TOKEN;
+};

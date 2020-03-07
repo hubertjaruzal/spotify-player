@@ -2,9 +2,13 @@ import { ajax } from "rxjs/ajax";
 import { map, catchError } from "rxjs/operators";
 import { of } from "rxjs";
 
-export const defaultHeaders = () => ({
-  "Content-Type": "application/json",
-});
+export const defaultHeaders = () => {
+  const accessToken = getTokenFromLocalStorage("access_token");
+  return ({
+    "Content-Type": "application/json",
+    "Authorization": accessToken ? `Bearer ${accessToken}` : "",
+  });
+};
 
 export const apiCall = (
   url: string,
@@ -12,7 +16,7 @@ export const apiCall = (
   body: any,
   onSuccess: any,
   onFailure: any,
-  headers: any = defaultHeaders,
+  headers: any = defaultHeaders(),
 ) => {
   return ajax({
     url,
@@ -39,4 +43,10 @@ export const getTokenFromLocalStorage = (name: string) => {
     return token ? token : "";
   }
   return "";
+};
+
+export const removeTokenFromLocalStorage = (name: string) => {
+  if (localStorage) {
+    localStorage.removeItem(`player_${name}`);
+  }
 };

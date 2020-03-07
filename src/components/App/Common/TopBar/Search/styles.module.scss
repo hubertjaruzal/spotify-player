@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  align-items: flex-start;
+  align-self: flex-start;
+
+  input {
+    padding: 6px 48px;
+    height: 40px;
+    border-radius: 25px;
+    width: 350px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+  }
+}

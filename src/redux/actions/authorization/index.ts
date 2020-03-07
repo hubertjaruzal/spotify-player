@@ -13,6 +13,7 @@ import {
   refreshAccessTokenSuccessPayload,
   refreshAccessTokenSuccessAction,
   refreshAccessTokenFailureAction,
+  resetAccessTokenAction,
 } from "../../../models/redux/authorization";
 
 
@@ -70,5 +71,13 @@ export const refreshAccessTokenSuccess = (payload: refreshAccessTokenSuccessPayl
 export const refreshAccessTokenFailure = (): refreshAccessTokenFailureAction => {
   return {
     type: "REFRESH_ACCESS_TOKEN_FAILURE",
+  };
+};
+
+// Other
+
+export const resetAccessToken = (): resetAccessTokenAction => {
+  return {
+    type: "RESET_ACCESS_TOKEN",
   };
 };

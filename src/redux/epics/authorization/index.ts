@@ -42,6 +42,7 @@ export const authorize = (payload: authorizePayload) => (
     },
     (data: XHRPayload) => authorizeSuccess(data.response),
     authorizeFailure,
+    { "Content-Type": "application/x-www-form-urlencoded" },
   )
 );
 
@@ -66,5 +67,6 @@ export const refreshAccessToken = () => (
     },
     (data: XHRPayload) => refreshAccessTokenSuccess(data.response),
     refreshAccessTokenFailure,
+    { "Content-Type": "application/x-www-form-urlencoded" },
   )
 );

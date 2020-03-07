@@ -1,9 +1,38 @@
+@font-face {
+  font-family: "Lato";
+  font-weight: 300;
+  src:
+    url("./assets/fonts/Lato/Lato-Light.eot") format("eot"),
+    url("./assets/fonts/Lato/Lato-Light.ttf") format("ttf"),
+    url("./assets/fonts/Lato/Lato-Light.woff2") format("woff2"),
+    url("./assets/fonts/Lato/Lato-Light.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Lato";
+  font-weight: 400;
+  src:
+    url("./assets/fonts/Lato/Lato-Medium.eot") format("eot"),
+    url("./assets/fonts/Lato/Lato-Medium.ttf") format("ttf"),
+    url("./assets/fonts/Lato/Lato-Medium.woff2") format("woff2"),
+    url("./assets/fonts/Lato/Lato-Medium.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Lato";
+  font-weight: 600;
+  src:
+    url("./assets/fonts/Lato/Lato-Bold.eot") format("eot"),
+    url("./assets/fonts/Lato/Lato-Bold.ttf") format("ttf"),
+    url("./assets/fonts/Lato/Lato-Bold.woff2") format("woff2"),
+    url("./assets/fonts/Lato/Lato-Bold.woff") format("woff");
+}
+
 body {
   display: flex;
   height: 100%;
   width: 100%;
   margin: 0;
-  font-family: Lato;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
@@ -19,6 +48,8 @@ body {
   -moz-appearance: none;
   line-height: normal;
   -webkit-tap-highlight-color: transparent;
+  font-family: "Lato";
+  font-weight: 400;
 }
 
 #root {
