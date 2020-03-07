@@ -6,20 +6,34 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "@types/enzyme": "^3.10.5",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/jest": "^24.0.0",
     "@types/node": "^12.0.0",
+    "@types/ramda": "^0.26.43",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "@types/react-redux": "^7.1.7",
+    "@types/react-router-dom": "^5.1.3",
+    "eslint-plugin-react": "^7.18.3",
+    "node-sass": "^4.13.1",
+    "query-string": "^6.11.1",
+    "ramda": "^0.27.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
+    "redux": "^4.0.5",
+    "redux-observable": "^1.2.0",
     "typescript": "~3.7.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "linter": "./node_modules/.bin/eslint ./ --ext .js,.tsx,.ts"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -34,6 +48,29 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "cypress": "^4.1.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "eslint-plugin-cypress": "^2.10.3",
+    "husky": "^4.2.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn run test --watchAll=false && yarn run linter",
+      "pre-push": "yarn run test --watchAll=false && yarn run linter"
+    }
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!/node_modules/",
+      "!src/react-app-env.d.ts",
+      "!src/models/**/*",
+      "!src/redux/configureStore.ts",
+      "!src/redux/root.ts"
     ]
   }
 }

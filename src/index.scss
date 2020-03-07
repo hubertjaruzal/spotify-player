@@ -1,0 +1,27 @@
+body {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  font-family: Lato;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+  outline: none;
+  -ms-content-zooming: none;
+  -ms-scroll-chaining: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  line-height: normal;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#root {
+  display: flex;
+  flex: 1;
+}

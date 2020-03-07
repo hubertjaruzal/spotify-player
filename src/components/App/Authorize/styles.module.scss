@@ -1,0 +1,36 @@
+@import "../../../variables.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: $black;
+  width: 100vw;
+  height: 100vh;
+  flex: 1;
+
+  > svg {
+    width: 100%;
+    max-width: 180px;
+    margin: 20px 20px 40px 20px;
+    path {
+      fill: white;
+    }
+  }
+
+  > a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $main-color;
+    min-width: 250px;
+    letter-spacing: 2px;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding: 16px 14px 18px;
+  }
+}

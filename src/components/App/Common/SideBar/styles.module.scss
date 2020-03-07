@@ -1,0 +1,18 @@
+@import "../../../../variables.scss";
+
+.container {
+  display: flex;
+  align-items: flex-start;
+  height: calc(100% - 90px);
+  width: 230px;
+  background: $onyx-black;
+  padding: 25px;
+
+  > svg {
+    width: 100%;
+    max-width: 130px;
+    path {
+      fill: $main-color;
+    }
+  }
+}

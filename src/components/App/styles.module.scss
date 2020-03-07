@@ -1,0 +1,15 @@
+@import "../../variables.scss";
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  background: $black;
+  width: 100vw;
+  height: 100vh;
+  flex: 1;
+
+  .content {
+    display: flex;
+    flex: 1;
+  }
+}

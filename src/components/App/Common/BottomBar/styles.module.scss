@@ -1,0 +1,9 @@
+@import "../../../../variables.scss";
+
+.container {
+  display: flex;
+  height: 90px;
+  width: 100%;
+  background: $dark-grey;
+  padding: 0 15px;
+}
