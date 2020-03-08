@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // Types
 import { browseStateModel } from "../../../../../models/redux/browse";
 
-import styles from "./styles.module.scss";
+import styles from "../../../../../styles/Row/styles.module.scss";
 
 
 interface Props {
@@ -27,7 +27,7 @@ const CategoriesRow = (props: Props) => {
           <ul className={styles.list}>
             {props.list.map((item: any) => (
               <div
-                key={item.id}
+                key={`categories_${item.id}`}
                 className={styles.box}
               >
                 <img src={pathOr("", [...props.imagesPath, "0", "url"], item)} alt=""/>

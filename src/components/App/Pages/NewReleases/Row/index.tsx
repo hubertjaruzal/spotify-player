@@ -21,7 +21,7 @@ import {
 import { userStateModel } from "../../../../../models/redux/user";
 import { newReleasesItemObject } from "../../../../../models/redux";
 
-import styles from "./styles.module.scss";
+import styles from "../../../../../styles/Row/styles.module.scss";
 
 
 interface Props {
@@ -43,11 +43,14 @@ const NewReleasesRow = (props: Props) => {
           <ul className={styles.list}>
             {props.list.map((item: any) => (
               <div
-                key={item.id}
+                key={`new_releases_${item.id}`}
                 className={styles.box}
               >
                 {!!pathOr([], props.imagesPath, item).length ?
-                  <img src={pathOr("", [...props.imagesPath, "0", "url"], item)} alt=""/> :
+                  <img
+                    src={pathOr("", [...props.imagesPath, "0", "url"], item)}
+                    alt=""
+                  /> :
                   <li><ProfileIcon/></li>
                 }
                 <div className={styles.boxOverlay}>

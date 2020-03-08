@@ -36,7 +36,7 @@ const NewReleases = (props: Props) => {
   return (
     <section className={styles.container}>
       <NewReleasesRow
-        title="Albums"
+        title="New Releases - Albums"
         list={pathOr([], ["browse", "new_releases", "albums", "items"], props)}
         imagesPath={["images"]}
       />

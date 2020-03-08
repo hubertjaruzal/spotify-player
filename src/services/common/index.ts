@@ -9,7 +9,7 @@ export const prepareTracksPayload = (payload: any) => {
 };
 
 export const isSafari = () => {
-  return navigator.userAgent.toLowerCase().indexOf("safari/") > -1;
+  return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 };
 
 export const isMobile = () => {

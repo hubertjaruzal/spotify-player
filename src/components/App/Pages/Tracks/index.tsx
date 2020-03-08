@@ -41,11 +41,12 @@ const Tracks = (props: Props) => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return (
     <section className={styles.container}>
       <ul>
         {props.tracks.items.map((item: trackFullObject) => (
-          <li key={item.id}>
+          <li key={`tracks_${item.id}`}>
             <PlayButton
               item={item}
               isProductPremium={props.user.product === "premium"}

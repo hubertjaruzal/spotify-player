@@ -12,6 +12,7 @@ import {
 import { userStateModel } from "../../../../../models/redux/user";
 
 import styles from "./styles.module.scss";
+import rowStyles from "../../../../../styles/Row/styles.module.scss";
 
 
 interface Props {
@@ -27,11 +28,11 @@ const SearchRow = (props: Props) => {
     <>
       {!!props.list.length &&
         <>
-          <h2 className={styles.header}>{props.title}</h2>
-          <ul className={styles.list}>
+          <h2 className={rowStyles.header}>{props.title}</h2>
+          <ul className={rowStyles.list}>
             {props.list.map((item: any) => (
               <div
-                key={item.id}
+                key={`search_${item.id}`}
                 className={styles.box}
               >
                 {!!pathOr([], props.imagesPath, item).length ?
