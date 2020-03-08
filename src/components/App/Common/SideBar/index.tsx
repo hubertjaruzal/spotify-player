@@ -7,12 +7,16 @@ import isEmpty from "ramda/src/isEmpty";
 
 import { ReactComponent as LogoIcon } from "../../../../assets/images/logo.svg";
 
-import { browseGetCategories } from "../../../../redux/actions/browse";
+import {
+  browseGetCategories,
+  browseGetNewReleases,
+} from "../../../../redux/actions/browse";
 
 // Types
 import {
   browseStateModel,
   browseGetCategories as browseGetCategoriesFunction,
+  browseGetNewReleases as browseGetNewReleasesFunction,
 } from "../../../../models/redux/browse";
 
 import styles from "./styles.module.scss";
@@ -21,6 +25,7 @@ import styles from "./styles.module.scss";
 interface Props {
   browse: browseStateModel;
   browseGetCategories: browseGetCategoriesFunction;
+  browseGetNewReleases: browseGetNewReleasesFunction;
 };
 
 const SideBar = (props: Props) => {
@@ -45,7 +50,8 @@ const SideBar = (props: Props) => {
         <li>
           <button
             type="button"
-            onClick={() => {}}
+            onClick={props.browseGetNewReleases}
+            className={isActive(!isEmpty(props.browse.new_releases))}
           >
             <FontAwesomeIcon icon="music"/>
             <span>New Releases</span>
@@ -65,6 +71,7 @@ const mapStateToProps = (state: {
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return bindActionCreators({
     browseGetCategories,
+    browseGetNewReleases,
   }, dispatch);
 };
 

@@ -95,6 +95,20 @@ describe("app reducer", () => {
     });
   });
 
+  // Browse Get Categories
+
+  it("should handle BROWSE_GET_CATEGORIES_SUCCESS", () => {
+    expect(
+      app({
+        ...initialState,
+        global: {
+          ...initialState.global,
+          isLoading: true,
+        },
+      }, { type: "BROWSE_GET_CATEGORIES_SUCCESS" }),
+    ).toEqual(initialState);
+  });
+
   // Other
 
   it("should handle RESET_GLOBAL_ERROR", () => {

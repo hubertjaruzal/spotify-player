@@ -3,6 +3,7 @@ import { browse } from "./index";
 describe("browse reducer", () => {
   const initialState = {
     categories: {},
+    new_releases: {},
   };
 
   it("should return the initial state", () => {
@@ -50,5 +51,27 @@ describe("browse reducer", () => {
     expect(
       browse(initialState, { type: "SEARCH_SUCCESS" }),
     ).toEqual(initialState);
+  });
+
+  // Browse Get New Releases
+
+  it("should handle BROWSE_GET_NEW_RELEASES_SUCCESS", () => {
+    const payload = {
+      albums: {
+        href: "",
+        items: [],
+        limit: 0,
+        next:  null,
+        offset: 1,
+        previous: null,
+        total: 1,
+      },
+    };
+    expect(
+      browse(initialState, { type: "BROWSE_GET_NEW_RELEASES_SUCCESS", payload }),
+    ).toEqual({
+      ...initialState,
+      new_releases: payload,
+    });
   });
 });

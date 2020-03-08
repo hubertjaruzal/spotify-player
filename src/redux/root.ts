@@ -18,6 +18,7 @@ import {
 } from "./epics/user";
 import {
   browseGetCategoriesEpic,
+  browseGetNewReleasesEpic,
 } from "./epics/browse";
 
 import { authorization } from "./reducers/authorization";
@@ -38,6 +39,7 @@ export const rootEpic = combineEpics(
   playerPlaySuccessEpic,
   playerPauseSuccessEpic,
   browseGetCategoriesEpic,
+  browseGetNewReleasesEpic,
 );
 
 export const rootReducer = combineReducers({

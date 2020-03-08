@@ -4,6 +4,10 @@ import {
   browseGetCategoriesSuccessAction,
   browseGetCategoriesFailureAction,
   browseGetCategoriesSuccessPayload,
+  browseGetNewReleasesAction,
+  browseGetNewReleasesSuccessPayload,
+  browseGetNewReleasesSuccessAction,
+  browseGetNewReleasesFailureAction,
 } from "../../../models/redux/browse";
 import { ErrorsPayload } from "../../../models/common";
 
@@ -26,6 +30,28 @@ export const browseGetCategoriesSuccess = (payload: browseGetCategoriesSuccessPa
 export const browseGetCategoriesFailure = (payload: ErrorsPayload): browseGetCategoriesFailureAction => {
   return {
     type: "BROWSE_GET_CATEGORIES_FAILURE",
+    payload,
+  };
+};
+
+// Browse Get New Releases
+
+export const browseGetNewReleases = (): browseGetNewReleasesAction => {
+  return {
+    type: "BROWSE_GET_NEW_RELEASES",
+  };
+};
+
+export const browseGetNewReleasesSuccess = (payload: browseGetNewReleasesSuccessPayload): browseGetNewReleasesSuccessAction => {
+  return {
+    type: "BROWSE_GET_NEW_RELEASES_SUCCESS",
+    payload,
+  };
+};
+
+export const browseGetNewReleasesFailure = (payload: ErrorsPayload): browseGetNewReleasesFailureAction => {
+  return {
+    type: "BROWSE_GET_NEW_RELEASES_FAILURE",
     payload,
   };
 };

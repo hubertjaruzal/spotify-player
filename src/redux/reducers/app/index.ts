@@ -32,6 +32,8 @@ const initialState: appStateModel = {
 export const app = (state = initialState, action: actionModel) => {
   switch (action.type) {
     case "SEARCH":
+    case "BROWSE_GET_CATEGORIES":
+    case "BROWSE_GET_NEW_RELEASES":
       return {
         ...state,
         global: {
@@ -48,7 +50,19 @@ export const app = (state = initialState, action: actionModel) => {
           isLoading: false,
         },
       };
+    case "BROWSE_GET_CATEGORIES_SUCCESS":
+    case "BROWSE_GET_NEW_RELEASES_SUCCESS":
+      return {
+        ...state,
+        global: {
+          ...state.global,
+          isLoading: false,
+        },
+      };
     case "SEARCH_FAILURE":
+    case "BROWSE_GET_CATEGORIES_FAILURE":
+    case "BROWSE_GET_NEW_RELEASES_FAILURE":
+    case "GET_USER_FAILURE":
       return {
         ...state,
         global: {

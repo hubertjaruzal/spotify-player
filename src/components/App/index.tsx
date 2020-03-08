@@ -9,6 +9,7 @@ import SideBar from "./Common/SideBar";
 import BottomBar from "./Common/BottomBar";
 import Search from "./Search";
 import Categories from "./Categories";
+import NewReleases from "./NewReleases";
 
 import { doesAccessTokenExist } from "../../services/common";
 import { removeTokenFromLocalStorage } from "../../services/api";
@@ -94,15 +95,22 @@ const App = (props: Props) => {
           location={props.location}
           history={props.history}
         />
-        {isEmpty(props.browse.categories) &&
+        {(isEmpty(props.browse.categories) && isEmpty(props.browse.new_releases)) &&
           <Search
             location={props.location}
             history={props.history}
             app={props.app}
           />
         }
-        {!isEmpty(props.browse.categories) &&
+        {(isEmpty(props.browse.new_releases) && !isEmpty(props.browse.categories)) &&
           <Categories
+            location={props.location}
+            history={props.history}
+            browse={props.browse}
+          />
+        }
+        {(isEmpty(props.browse.categories) && !isEmpty(props.browse.new_releases)) &&
+          <NewReleases
             location={props.location}
             history={props.history}
             browse={props.browse}
