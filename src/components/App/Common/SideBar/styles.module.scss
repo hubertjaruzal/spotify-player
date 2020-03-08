@@ -26,22 +26,38 @@
     }
   }
 
-  > ul {
+  > .topList {
     display: flex;
     flex-direction: column;
     width: 100%;
     padding: 0;
     margin: 20px 0;
+    flex: 1;
+    list-style: none;
 
     @media #{$small-screen} {
       flex-direction: row;
       margin: 0;
     }
+  }
 
+  > .bottomList {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0 0;
+    width: 100%;
+
+    @media #{$small-screen} {
+      display: none;
+    }
+  }
+
+  ul {
     > li {
       width: 100%;
       margin: 0 0 10px 0;
-      list-style: none;
 
       @media #{$small-screen} {
         width: 50px;

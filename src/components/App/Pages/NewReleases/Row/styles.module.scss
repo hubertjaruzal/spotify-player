@@ -11,6 +11,12 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   align-content: flex-start;
+  margin: 20px 0;
+  padding: 0 40px;
+
+  @media #{$small-screen} {
+    margin: 20px 0 90px 0;
+  }
 
   .box {
     display: flex;

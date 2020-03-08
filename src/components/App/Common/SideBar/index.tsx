@@ -24,7 +24,7 @@ const SideBar = (props: Props) => {
   return (
     <nav className={styles.container}>
       <LogoIcon/>
-      <ul>
+      <ul className={styles.topList}>
         <li>
           <Link
             to="/search"
@@ -50,6 +50,17 @@ const SideBar = (props: Props) => {
           >
             <FontAwesomeIcon icon="music"/>
             <span>New Releases</span>
+          </Link>
+        </li>
+      </ul>
+      <ul className={styles.bottomList}>
+        <li>
+          <Link
+            to="/user-profile"
+            className={linkClass("/user-profile")}
+          >
+            <FontAwesomeIcon icon="user"/>
+            <span>Profile Info</span>
           </Link>
         </li>
       </ul>

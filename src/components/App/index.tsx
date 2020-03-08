@@ -12,6 +12,7 @@ import Categories from "./Pages/Categories";
 import NewReleases from "./Pages/NewReleases";
 import CategoriesDetails from "./Pages/Categories/Details";
 import Tracks from "./Pages/Tracks";
+import UserProfile from "./Pages/UserProfile";
 
 import { doesAccessTokenExist } from "../../services/common";
 import { removeTokenFromLocalStorage } from "../../services/api";
@@ -98,6 +99,7 @@ const App = (props: Props) => {
           <Route exact path="/categories/:id" component={CategoriesDetails}/>
           <Route exact path="/new-releases" component={NewReleases}/>
           <Route exact path="/tracks/:type/:id" component={Tracks}/>
+          <Route exact path="/user-profile" component={UserProfile}/>
         </Switch>
         {props.app.global.isLoading &&
           <div className={styles.loader}>

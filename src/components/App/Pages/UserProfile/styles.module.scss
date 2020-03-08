@@ -1,0 +1,19 @@
+@import "../../../../variables.scss";
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  svg {
+    font-size: 60px;
+    color: white;
+  }
+
+  span {
+    color: white;
+    margin: 10px 0 5px 0;
+  }
+}
