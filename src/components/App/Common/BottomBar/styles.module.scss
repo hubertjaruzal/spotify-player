@@ -51,4 +51,13 @@
       }
     }
   }
+
+  > span {
+    color: $light-grey;
+    font-size: 14px;
+
+    @media #{$small-screen} {
+      font-size: 13px;
+    }
+  }
 }

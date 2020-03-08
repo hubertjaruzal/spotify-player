@@ -24,6 +24,12 @@ interface Props {
 };
 
 const Search = (props: Props) => {
+  const noResult = () => (
+    !pathOr([], ["app", "search", "albums", "items"], props).length &&
+    !pathOr([], ["app", "search", "artists", "items"], props).length &&
+    !pathOr([], ["app", "search", "tracks", "items"], props).length
+  );
+
   return (
     <section className={styles.container}>
       <SearchRow
@@ -47,6 +53,9 @@ const Search = (props: Props) => {
         player={props.player}
         user={props.user}
       />
+      {noResult() &&
+        <span className={styles.noResults}>No Results</span>
+      }
     </section>
   );
 };
