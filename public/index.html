@@ -11,7 +11,7 @@
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>Player</title>
+    <title>Spotify - Player</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -19,6 +19,7 @@
 
     <script src="https://sdk.scdn.co/spotify-player.js"></script>
     <script>
+        console.log("Created by: Hubert Jaruzal (hubertjaruzal@gmail.com)");
         window.onSpotifyWebPlaybackSDKReady = () => {
           const token = localStorage.getItem("player_access_token");
           const player = new Spotify.Player({

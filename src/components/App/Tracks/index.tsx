@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { bindActionCreators, Dispatch } from "redux";
 import { connect } from "react-redux";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import pathOr from "ramda/src/pathOr";
 
 import { getTracks } from "../../../redux/actions/tracks";
-import { playerPlay, playerPlayPreview } from "../../../redux/actions/player";
+
+import PlayButton from "../Common/PlayButton";
 
 // Types
 import { History, Location } from "history";
@@ -16,10 +17,6 @@ import {
   getTracks as getTracksFunction,
 } from "../../../models/redux/tracks";
 import { userStateModel } from "../../../models/redux/user";
-import {
-  playerPlay as playerPlayFunction,
-  playerPlayPreview as playerPlayPreviewFunction,
-} from "../../../models/redux/player";
 import { trackFullObject } from "../../../models/redux";
 
 import styles from "./styles.module.scss";
@@ -33,8 +30,6 @@ interface Props {
   tracks: any;
   getTracks: getTracksFunction;
   user: userStateModel;
-  playerPlay: playerPlayFunction;
-  playerPlayPreview: playerPlayPreviewFunction;
 };
 
 const Tracks = (props: Props) => {
@@ -51,29 +46,14 @@ const Tracks = (props: Props) => {
       <ul>
         {props.tracks.items.map((item: trackFullObject) => (
           <li key={item.id}>
-            {props.user.product === "premium" &&
-              <button
-                type="button"
-                onClick={() => props.playerPlay({
-                  context_uri: item.uri,
-                })}
-              >
-                <FontAwesomeIcon icon="play-circle"/>
-              </button>
-            }
-            {(props.user.product !== "premium" && item.preview_url) &&
-              <button
-                type="button"
-                onClick={() => props.playerPlayPreview({
-                  preview_url: item.preview_url,
-                })}
-              >
-                <FontAwesomeIcon icon="play-circle"/>
-              </button>
-            }
+            <PlayButton
+              item={item}
+              isProductPremium={props.user.product === "premium"}
+            />
             <span className={styles.trackName}>{item.name}</span>
+
             <span className={styles.artists}>
-              ({item.artists.map((item: any) => item.name).join(", ")})
+              ({pathOr([], ["artists"], item).map((item: any) => item.name).join(", ")})
             </span>
           </li>
         ))}
@@ -95,8 +75,6 @@ const mapStateToProps = (state: {
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return bindActionCreators({
     getTracks,
-    playerPlay,
-    playerPlayPreview,
   }, dispatch);
 };
 

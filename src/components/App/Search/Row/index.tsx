@@ -1,21 +1,13 @@
 import React from "react";
-import { connect } from "react-redux";
-import { bindActionCreators, Dispatch } from "redux";
 import pathOr from "ramda/src/pathOr";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { ReactComponent as ProfileIcon } from "../../../../assets/images/profile.svg";
 
-import {
-  playerPlay,
-  playerPlayPreview,
-} from "../../../../redux/actions/player";
+import PlayButton from "../../Common/PlayButton";
 
 // Types
 import {
   playerStateModel,
-  playerPlay as playerPlayFunction,
-  playerPlayPreview as playerPlayPreviewFunction,
 } from "../../../../models/redux/player";
 import { userStateModel } from "../../../../models/redux/user";
 
@@ -26,8 +18,6 @@ interface Props {
   title: string;
   list: any[];
   imagesPath: string[];
-  playerPlay: playerPlayFunction;
-  playerPlayPreview: playerPlayPreviewFunction;
   player: playerStateModel;
   user: userStateModel;
 };
@@ -48,30 +38,12 @@ const SearchRow = (props: Props) => {
                   <img src={pathOr("", [...props.imagesPath, "0", "url"], item)} alt=""/> :
                   <li><ProfileIcon/></li>
                 }
-                {props.user.product === "premium" &&
-                  <div className={styles.boxOverlay}>
-                    <button
-                      type="button"
-                      onClick={() => props.playerPlay({
-                        context_uri: item.uri,
-                      })}
-                    >
-                      <FontAwesomeIcon icon="play-circle"/>
-                    </button>
-                  </div>
-                }
-                {(props.user.product !== "premium" && item.preview_url) &&
-                  <div className={styles.boxOverlay}>
-                    <button
-                      type="button"
-                      onClick={() => props.playerPlayPreview({
-                        preview_url: item.preview_url,
-                      })}
-                    >
-                      <FontAwesomeIcon icon="play-circle"/>
-                    </button>
-                  </div>
-                }
+                <div className={styles.boxOverlay}>
+                  <PlayButton
+                    item={item}
+                    isProductPremium={props.user.product === "premium"}
+                  />
+                </div>
               </div>
             ))}
           </ul>
@@ -81,22 +53,4 @@ const SearchRow = (props: Props) => {
   );
 };
 
-const mapStateToProps = (state: {
-  player: playerStateModel,
-  user: userStateModel,
-}) => ({
-  player: state.player,
-  user: state.user,
-});
-
-const mapDispatchToProps = (dispatch: Dispatch) => {
-  return bindActionCreators({
-    playerPlay,
-    playerPlayPreview,
-  }, dispatch);
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(SearchRow);
+export default SearchRow;
