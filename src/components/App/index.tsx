@@ -16,6 +16,7 @@ import {
   resetAccessToken,
 } from "../../redux/actions/authorization";
 import { resetGlobalError } from "../../redux/actions/app";
+import { getUser } from "../../redux/actions/user";
 
 // Types
 import { History, Location } from "history";
@@ -28,6 +29,7 @@ import {
   appStateModel,
   resetGlobalError as resetGlobalErrorFunction,
 } from "../../models/redux/app";
+import { getUser as getUserFunction } from "../../models/redux/user";
 
 import styles from "./styles.module.scss";
 
@@ -40,6 +42,7 @@ interface Props {
   refreshAccessToken: refreshAccessTokenFunction;
   resetGlobalError: resetGlobalErrorFunction;
   resetAccessToken: resetAccessTokenFunction;
+  getUser: getUserFunction;
 };
 
 const App = (props: Props) => {
@@ -47,6 +50,7 @@ const App = (props: Props) => {
     if (!doesAccessTokenExist(props.authorization.access_token)) {
       props.history.replace("/authorize");
     } else {
+      props.getUser();
       props.refreshAccessToken();
     }
 
@@ -109,6 +113,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     refreshAccessToken,
     resetGlobalError,
     resetAccessToken,
+    getUser,
   }, dispatch);
 };
 

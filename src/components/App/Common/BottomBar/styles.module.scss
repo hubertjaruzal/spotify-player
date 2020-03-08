@@ -6,4 +6,48 @@
   width: 100%;
   background: $dark-grey;
   padding: 0 15px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  .album {
+    position: absolute;
+    display: flex;
+    height: 90px;
+    left: 0;
+    top: 0;
+
+    img {
+      height: 100%;;
+    }
+  }
+
+  > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
+    background: transparent;
+    padding: 0;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    svg {
+      font-size: 49px;
+      path {
+        transition: all 0.3s ease;
+        fill: $main-color;
+      }
+    }
+
+    &:hover {
+      > svg {
+        path {
+          fill: $light-main-color;
+        }
+      }
+    }
+  }
 }

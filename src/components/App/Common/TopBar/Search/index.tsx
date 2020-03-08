@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { search } from "../../../../../redux/actions/app";
 
@@ -25,9 +26,10 @@ const TopBarSearch = (props: Props) => {
 
   return (
     <div className={styles.container}>
+      <FontAwesomeIcon icon="search"/>
       <input
         value={search}
-        placeholder="Search for Artists, Songs, or Podcasts"
+        placeholder="Search for Albums, Artists, or Tracks"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           props.search({ query: e.target.value });
           setSearch(e.target.value);

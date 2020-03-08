@@ -34,7 +34,6 @@ export interface authorizeFailureAction {
   type: typeof AUTHORIZE_FAILURE;
 };
 
-
 // Refresh Access Token
 
 const REFRESH_ACCESS_TOKEN = "REFRESH_ACCESS_TOKEN";
