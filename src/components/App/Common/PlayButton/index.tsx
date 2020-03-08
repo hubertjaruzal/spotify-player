@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import { isSafari, isMobile } from "../../../../services/common";
+
 
 import {
   playerPlay,
@@ -26,7 +28,7 @@ interface Props {
 const PlayButton = (props: Props) => {
   return (
     <>
-      {(props.isProductPremium && props.item.uri) &&
+      {(props.isProductPremium && props.item.uri && !isSafari() && !isMobile()) &&
         <button
           type="button"
           onClick={() => props.playerPlay({
@@ -36,7 +38,7 @@ const PlayButton = (props: Props) => {
           <FontAwesomeIcon icon="play-circle"/>
         </button>
       }
-      {(!props.isProductPremium && props.item.preview_url) &&
+      {((!props.isProductPremium || isSafari() || isMobile()) && props.item.preview_url) &&
         <button
           type="button"
           onClick={() => props.playerPlayPreview({
