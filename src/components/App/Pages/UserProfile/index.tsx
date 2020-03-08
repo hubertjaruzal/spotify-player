@@ -4,9 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // Types
 import { History, Location } from "history";
-import {
-  appStateModel,
-} from "../../../../models/redux/app";
 import { userStateModel } from "../../../../models/redux/user";
 
 import styles from "../styles.module.scss";
