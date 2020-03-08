@@ -28,7 +28,7 @@ interface Props {
   imagesPath: string[];
   playerPlay: playerPlayFunction;
   playerPlayPreview: playerPlayPreviewFunction;
-  player: any;
+  player: playerStateModel;
   user: userStateModel;
 };
 

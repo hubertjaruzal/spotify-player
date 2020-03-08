@@ -16,9 +16,13 @@ import {
 import {
   getUserEpic,
 } from "./epics/user";
+import {
+  browseGetCategoriesEpic,
+} from "./epics/browse";
 
 import { authorization } from "./reducers/authorization";
 import { app } from "./reducers/app";
+import { browse } from "./reducers/browse";
 import { user } from "./reducers/user";
 import { player } from "./reducers/player";
 
@@ -33,11 +37,13 @@ export const rootEpic = combineEpics(
   playerGetUsersCurrentPlaybackEpic,
   playerPlaySuccessEpic,
   playerPauseSuccessEpic,
+  browseGetCategoriesEpic,
 );
 
 export const rootReducer = combineReducers({
   authorization,
   app,
+  browse,
   user,
   player,
 });

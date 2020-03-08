@@ -2,17 +2,70 @@
 
 .container {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
   height: calc(100% - 90px);
   width: 230px;
   background: $onyx-black;
-  padding: 25px;
+  padding: 25px 10px;
 
   > svg {
     width: 100%;
     max-width: 130px;
+    margin: 0 10px;
     path {
       fill: $main-color;
+    }
+  }
+
+  > ul {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+    margin: 20px 0;
+
+    > li {
+      width: 100%;
+      margin: 0 0 10px 0;
+
+      > button {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        height: 40px;
+        padding: 0 15px;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        background: transparent;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        > svg {
+          margin: 0 10px 0 0;
+          font-size: 18px;
+
+          path {
+            fill: $light-grey;
+          }
+        }
+
+        > span {
+          font-size: 16px;
+          font-weight: 600;
+          color: $light-grey;
+        }
+
+        &:hover {
+          background: $black;
+        }
+
+        &.active {
+          background: $black;
+        }
+      }
     }
   }
 }

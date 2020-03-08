@@ -1,0 +1,92 @@
+@import "../../../../variables.scss";
+
+.header {
+  color: white;
+  font-weight: 600;
+  margin: 10px 20px;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+
+  .box {
+    display: flex;
+    width: 150px;
+    height: 150px;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  
+    > li {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: $grey;
+
+      > svg {
+        width: 120px;
+        height: 120px;
+        background: $black;
+        border-radius: 100px;
+        path {
+          fill: white;
+        }
+      }
+    }
+
+    .boxOverlay {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.9);
+      opacity: 0;
+      transition: all 0.3s ease;
+
+      button {
+        padding: 0;
+        width: 50px;
+        height: 50px;
+        background: transparent;
+        border: none;
+        border-radius: 100px;
+        outline: none;
+        cursor: pointer;
+
+        > svg {
+          font-size: 48px;
+          path {
+            transition: all 0.3s ease;
+            fill: $main-color;
+          }
+        }
+
+        &:hover {
+          > svg {
+            path {
+              fill: $light-main-color;
+            }
+          }
+        }
+      }
+    }
+
+    &:hover {
+      .boxOverlay {
+        opacity: 1;
+      }
+    }
+  }
+}

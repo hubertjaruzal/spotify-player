@@ -1,5 +1,6 @@
 import { ofType, ActionsObservable, Epic } from "redux-observable";
 import { switchMap, pluck, debounceTime } from "rxjs/operators";
+import { pathOr } from "ramda";
 
 import { apiCall } from "../../../services/api";
 
@@ -22,7 +23,6 @@ import {
   playerPauseSuccessAction,
 } from "../../../models/redux/player";
 import { XHRPayload } from "../../../models/common";
-import { pathOr } from "ramda";
 
 
 // Player Play
