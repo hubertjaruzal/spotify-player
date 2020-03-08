@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
+import { Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import isEmpty from "ramda/src/isEmpty";
 
 import TopBar from "./Common/TopBar";
 import SideBar from "./Common/SideBar";
@@ -10,6 +10,8 @@ import BottomBar from "./Common/BottomBar";
 import Search from "./Search";
 import Categories from "./Categories";
 import NewReleases from "./NewReleases";
+import CategoriesDetails from "./Categories/Details";
+import Tracks from "./Tracks";
 
 import { doesAccessTokenExist } from "../../services/common";
 import { removeTokenFromLocalStorage } from "../../services/api";
@@ -20,7 +22,6 @@ import {
 } from "../../redux/actions/authorization";
 import { resetGlobalError } from "../../redux/actions/app";
 import { getUser } from "../../redux/actions/user";
-import { browseGetCategories } from "../../redux/actions/browse";
 
 // Types
 import { History, Location } from "history";
@@ -34,10 +35,6 @@ import {
   resetGlobalError as resetGlobalErrorFunction,
 } from "../../models/redux/app";
 import { getUser as getUserFunction } from "../../models/redux/user";
-import {
-  browseStateModel,
-  browseGetCategories as browseGetCategoriesFunction,
-} from "../../models/redux/browse";
 
 import styles from "./styles.module.scss";
 
@@ -47,12 +44,10 @@ interface Props {
   history: History;
   authorization: authorizationStateModel;
   app: appStateModel;
-  browse: browseStateModel,
   refreshAccessToken: refreshAccessTokenFunction;
   resetGlobalError: resetGlobalErrorFunction;
   resetAccessToken: resetAccessTokenFunction;
   getUser: getUserFunction;
-  browseGetCategories: browseGetCategoriesFunction;
 };
 
 const App = (props: Props) => {
@@ -61,7 +56,6 @@ const App = (props: Props) => {
       props.history.replace("/authorize");
     } else {
       props.getUser();
-      props.browseGetCategories();
       props.refreshAccessToken();
     }
 
@@ -89,33 +83,22 @@ const App = (props: Props) => {
 
   return (
     <section className={styles.container}>
-      <SideBar/>
+      <SideBar
+        location={props.location}
+        history={props.history}
+      />
       <section className={styles.content}>
         <TopBar
           location={props.location}
           history={props.history}
         />
-        {(isEmpty(props.browse.categories) && isEmpty(props.browse.new_releases)) &&
-          <Search
-            location={props.location}
-            history={props.history}
-            app={props.app}
-          />
-        }
-        {(isEmpty(props.browse.new_releases) && !isEmpty(props.browse.categories)) &&
-          <Categories
-            location={props.location}
-            history={props.history}
-            browse={props.browse}
-          />
-        }
-        {(isEmpty(props.browse.categories) && !isEmpty(props.browse.new_releases)) &&
-          <NewReleases
-            location={props.location}
-            history={props.history}
-            browse={props.browse}
-          />
-        }
+        <Switch>
+          <Route exact path="/search" component={Search}/>
+          <Route exact path="/categories" component={Categories}/>
+          <Route exact path="/categories/:id" component={CategoriesDetails}/>
+          <Route exact path="/new-releases" component={NewReleases}/>
+          <Route exact path="/tracks/:type/:id" component={Tracks}/>
+        </Switch>
         {props.app.global.isLoading &&
           <div className={styles.loader}>
             <FontAwesomeIcon className="fa-spin" icon="circle-notch"/>
@@ -130,11 +113,9 @@ const App = (props: Props) => {
 const mapStateToProps = (state: {
   authorization: authorizationStateModel,
   app: appStateModel,
-  browse: browseStateModel,
 }) => ({
   authorization: state.authorization,
   app: state.app,
-  browse: state.browse,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
@@ -143,7 +124,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     resetGlobalError,
     resetAccessToken,
     getUser,
-    browseGetCategories,
   }, dispatch);
 };
 

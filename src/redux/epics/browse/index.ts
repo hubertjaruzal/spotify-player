@@ -1,5 +1,5 @@
 import { ofType, ActionsObservable, Epic } from "redux-observable";
-import { switchMap } from "rxjs/operators";
+import { switchMap, pluck } from "rxjs/operators";
 
 import { apiCall } from "../../../services/api";
 
@@ -8,12 +8,16 @@ import {
   browseGetCategoriesFailure,
   browseGetNewReleasesSuccess,
   browseGetNewReleasesFailure,
+  browseGetCategoryPlaylistsSuccess,
+  browseGetCategoryPlaylistsFailure,
 } from "../../actions/browse";
 
 //Types
 import {
   browseGetCategoriesAction,
   browseGetNewReleasesAction,
+  browseGetCategoryPlaylistsPayload,
+  browseGetCategoryPlaylistsAction,
 } from "../../../models/redux/browse";
 import { XHRPayload } from "../../../models/common";
 
@@ -53,5 +57,25 @@ export const browseGetNewReleases = () => (
     {},
     (data: XHRPayload) => browseGetNewReleasesSuccess(data.response),
     browseGetNewReleasesFailure,
+  )
+);
+
+// Browse Get Category Playlists
+
+export const browseGetCategoryPlaylistsEpic: Epic = (action$: ActionsObservable<browseGetCategoryPlaylistsAction>) => (
+  action$.pipe(
+    ofType("BROWSE_GET_CATEGORY_PLAYLISTS"),
+    pluck("payload"),
+    switchMap(browseGetCategoryPlaylists),
+  )
+);
+
+export const browseGetCategoryPlaylists = (payload: browseGetCategoryPlaylistsPayload) => (
+  apiCall(
+    `https://api.spotify.com/v1/browse/categories/${payload.category_id}/playlists`,
+    "GET",
+    {},
+    (data: XHRPayload) => browseGetCategoryPlaylistsSuccess(data.response),
+    browseGetCategoryPlaylistsFailure,
   )
 );

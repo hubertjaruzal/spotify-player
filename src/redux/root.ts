@@ -19,13 +19,18 @@ import {
 import {
   browseGetCategoriesEpic,
   browseGetNewReleasesEpic,
+  browseGetCategoryPlaylistsEpic,
 } from "./epics/browse";
+import {
+  getTracksEpic,
+} from "./epics/tracks";
 
 import { authorization } from "./reducers/authorization";
 import { app } from "./reducers/app";
 import { browse } from "./reducers/browse";
 import { user } from "./reducers/user";
 import { player } from "./reducers/player";
+import { tracks } from "./reducers/tracks";
 
 
 export const rootEpic = combineEpics(
@@ -40,6 +45,8 @@ export const rootEpic = combineEpics(
   playerPauseSuccessEpic,
   browseGetCategoriesEpic,
   browseGetNewReleasesEpic,
+  browseGetCategoryPlaylistsEpic,
+  getTracksEpic,
 );
 
 export const rootReducer = combineReducers({
@@ -48,4 +55,5 @@ export const rootReducer = combineReducers({
   browse,
   user,
   player,
+  tracks,
 });

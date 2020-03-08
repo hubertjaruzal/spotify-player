@@ -1,0 +1,6 @@
+@import "../../../../variables.scss";
+
+.container {
+  height: calc(100% - 60px);
+  overflow: auto;
+}

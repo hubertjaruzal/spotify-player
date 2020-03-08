@@ -8,6 +8,7 @@ import { browseStateModel } from "../../../models/redux/browse";
 const initialState: browseStateModel = {
   categories: {},
   new_releases: {},
+  category_details: {},
 };
 
 export const browse = (state = initialState, action: actionModel) => {
@@ -25,10 +26,16 @@ export const browse = (state = initialState, action: actionModel) => {
         new_releases: pathOr({}, ["payload"], action),
       };
     case "SEARCH_SUCCESS":
+    case "BROWSE_GET_CATEGORY_PLAYLISTS":
       return {
         ...state,
         categories: initialState.categories,
         new_releases: initialState.new_releases,
+      };
+    case "BROWSE_GET_CATEGORY_PLAYLISTS_SUCCESS":
+      return {
+        ...state,
+        category_details: pathOr({}, ["payload"], action),
       };
     default:
       return state;

@@ -8,6 +8,11 @@ import {
   browseGetNewReleasesSuccessPayload,
   browseGetNewReleasesSuccessAction,
   browseGetNewReleasesFailureAction,
+  browseGetCategoryPlaylistsPayload,
+  browseGetCategoryPlaylistsAction,
+  browseGetCategoryPlaylistsSuccessPayload,
+  browseGetCategoryPlaylistsSuccessAction,
+  browseGetCategoryPlaylistsFailureAction,
 } from "../../../models/redux/browse";
 import { ErrorsPayload } from "../../../models/common";
 
@@ -52,6 +57,29 @@ export const browseGetNewReleasesSuccess = (payload: browseGetNewReleasesSuccess
 export const browseGetNewReleasesFailure = (payload: ErrorsPayload): browseGetNewReleasesFailureAction => {
   return {
     type: "BROWSE_GET_NEW_RELEASES_FAILURE",
+    payload,
+  };
+};
+
+// Browse Get Category Playlists
+
+export const browseGetCategoryPlaylists = (payload: browseGetCategoryPlaylistsPayload): browseGetCategoryPlaylistsAction => {
+  return {
+    type: "BROWSE_GET_CATEGORY_PLAYLISTS",
+    payload,
+  };
+};
+
+export const browseGetCategoryPlaylistsSuccess = (payload: browseGetCategoryPlaylistsSuccessPayload): browseGetCategoryPlaylistsSuccessAction => {
+  return {
+    type: "BROWSE_GET_CATEGORY_PLAYLISTS_SUCCESS",
+    payload,
+  };
+};
+
+export const browseGetCategoryPlaylistsFailure = (payload: ErrorsPayload): browseGetCategoryPlaylistsFailureAction => {
+  return {
+    type: "BROWSE_GET_CATEGORY_PLAYLISTS_FAILURE",
     payload,
   };
 };

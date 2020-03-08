@@ -5,6 +5,9 @@ import {
   browseGetNewReleases,
   browseGetNewReleasesSuccess,
   browseGetNewReleasesFailure,
+  browseGetCategoryPlaylists,
+  browseGetCategoryPlaylistsSuccess,
+  browseGetCategoryPlaylistsFailure,
 } from "./index";
 
 
@@ -110,5 +113,62 @@ describe("Browse actions", () => {
     };
 
     expect(browseGetNewReleasesFailure(payload)).toEqual(expectedAction);
+  });
+
+  // Browse Get Category Playlists
+
+  it("should return BROWSE_GET_CATEGORY_PLAYLISTS action", () => {
+    const payload = {
+      category_id: "123",
+    };
+    const expectedAction = {
+      type: "BROWSE_GET_CATEGORY_PLAYLISTS",
+      payload,
+    };
+
+    expect(browseGetCategoryPlaylists(payload)).toEqual(expectedAction);
+  });
+
+  it("should return BROWSE_GET_CATEGORY_PLAYLISTS_SUCCESS action", () => {
+    const payload = {
+      playlists: {
+        collaborative: false,
+        description: "",
+        external_urls: {},
+        href: "",
+        id: "",
+        images: [],
+        name: "",
+        owner: {},
+        public: null,
+        tracks: {
+          href: "",
+          total: 0,
+        },
+        type: "",
+        uri: "",
+      },
+    };
+    const expectedAction = {
+      type: "BROWSE_GET_CATEGORY_PLAYLISTS_SUCCESS",
+      payload,
+    };
+
+    expect(browseGetCategoryPlaylistsSuccess(payload)).toEqual(expectedAction);
+  });
+
+  it("should return BROWSE_GET_CATEGORY_PLAYLISTS_FAILURE action", () => {
+    const payload = {
+      error: {
+        status: 401,
+        message: "",
+      },
+    };
+    const expectedAction = {
+      type: "BROWSE_GET_CATEGORY_PLAYLISTS_FAILURE",
+      payload,
+    };
+
+    expect(browseGetCategoryPlaylistsFailure(payload)).toEqual(expectedAction);
   });
 });

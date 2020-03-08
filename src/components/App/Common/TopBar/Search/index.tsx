@@ -31,6 +31,9 @@ const TopBarSearch = (props: Props) => {
         value={search}
         placeholder="Search for Albums, Artists, or Tracks"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+          if (props.history.location.pathname !== "/search") {
+            props.history.push("/search");
+          }
           props.search({ query: e.target.value });
           setSearch(e.target.value);
         }}

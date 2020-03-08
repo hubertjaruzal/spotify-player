@@ -1,36 +1,24 @@
 import React from "react";
-import { connect } from "react-redux";
-import { bindActionCreators, Dispatch } from "redux";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
-import isEmpty from "ramda/src/isEmpty";
 
 import { ReactComponent as LogoIcon } from "../../../../assets/images/logo.svg";
 
-import {
-  browseGetCategories,
-  browseGetNewReleases,
-} from "../../../../redux/actions/browse";
-
 // Types
-import {
-  browseStateModel,
-  browseGetCategories as browseGetCategoriesFunction,
-  browseGetNewReleases as browseGetNewReleasesFunction,
-} from "../../../../models/redux/browse";
+import { History, Location } from "history";
 
 import styles from "./styles.module.scss";
 
 
 interface Props {
-  browse: browseStateModel;
-  browseGetCategories: browseGetCategoriesFunction;
-  browseGetNewReleases: browseGetNewReleasesFunction;
+  history: History;
+  location: Location;
 };
 
 const SideBar = (props: Props) => {
-  const isActive = (value: boolean) => classNames({
-    [styles.active]: value,
+  const linkClass = (pathname: string) => classNames({
+    [styles.active]: props.history.location.pathname === pathname,
   });
 
   return (
@@ -38,44 +26,35 @@ const SideBar = (props: Props) => {
       <LogoIcon/>
       <ul>
         <li>
-          <button
-            type="button"
-            onClick={props.browseGetCategories}
-            className={isActive(!isEmpty(props.browse.categories))}
+          <Link
+            to="/search"
+            className={linkClass("/search")}
+          >
+            <FontAwesomeIcon icon="search"/>
+            <span>Search</span>
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/categories"
+            className={linkClass("/categories")}
           >
             <FontAwesomeIcon icon="th-large"/>
             <span>Categories</span>
-          </button>
+          </Link>
         </li>
         <li>
-          <button
-            type="button"
-            onClick={props.browseGetNewReleases}
-            className={isActive(!isEmpty(props.browse.new_releases))}
+          <Link
+            to="/new-releases"
+            className={linkClass("/new-releases")}
           >
             <FontAwesomeIcon icon="music"/>
             <span>New Releases</span>
-          </button>
+          </Link>
         </li>
       </ul>
     </nav>
   );
 };
 
-const mapStateToProps = (state: {
-  browse: browseStateModel,
-}) => ({
-  browse: state.browse,
-});
-
-const mapDispatchToProps = (dispatch: Dispatch) => {
-  return bindActionCreators({
-    browseGetCategories,
-    browseGetNewReleases,
-  }, dispatch);
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(SideBar);
+export default SideBar;

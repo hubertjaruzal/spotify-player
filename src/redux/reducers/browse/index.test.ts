@@ -4,6 +4,7 @@ describe("browse reducer", () => {
   const initialState = {
     categories: {},
     new_releases: {},
+    category_details: {},
   };
 
   it("should return the initial state", () => {
@@ -72,6 +73,36 @@ describe("browse reducer", () => {
     ).toEqual({
       ...initialState,
       new_releases: payload,
+    });
+  });
+
+  // Browse Get Category Playlists
+
+  it("should handle BROWSE_GET_CATEGORY_PLAYLISTS_SUCCESS", () => {
+    const payload = {
+      playlists: {
+        collaborative: false,
+        description: "",
+        external_urls: {},
+        href: "",
+        id: "",
+        images: [],
+        name: "",
+        owner: {},
+        public: null,
+        tracks: {
+          href: "",
+          total: 0,
+        },
+        type: "",
+        uri: "",
+      },
+    };
+    expect(
+      browse(initialState, { type: "BROWSE_GET_CATEGORY_PLAYLISTS_SUCCESS", payload }),
+    ).toEqual({
+      ...initialState,
+      category_details: payload,
     });
   });
 });

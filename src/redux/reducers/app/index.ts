@@ -34,6 +34,8 @@ export const app = (state = initialState, action: actionModel) => {
     case "SEARCH":
     case "BROWSE_GET_CATEGORIES":
     case "BROWSE_GET_NEW_RELEASES":
+    case "BROWSE_GET_CATEGORY_PLAYLISTS":
+    case "GET_TRACKS":
       return {
         ...state,
         global: {
@@ -52,6 +54,8 @@ export const app = (state = initialState, action: actionModel) => {
       };
     case "BROWSE_GET_CATEGORIES_SUCCESS":
     case "BROWSE_GET_NEW_RELEASES_SUCCESS":
+    case "BROWSE_GET_CATEGORY_PLAYLISTS_SUCCESS":
+    case "GET_TRACKS_SUCCESS":
       return {
         ...state,
         global: {
@@ -63,6 +67,8 @@ export const app = (state = initialState, action: actionModel) => {
     case "BROWSE_GET_CATEGORIES_FAILURE":
     case "BROWSE_GET_NEW_RELEASES_FAILURE":
     case "GET_USER_FAILURE":
+    case "BROWSE_GET_CATEGORY_PLAYLISTS_FAILURE":
+    case "GET_TRACKS_FAILURE":
       return {
         ...state,
         global: {

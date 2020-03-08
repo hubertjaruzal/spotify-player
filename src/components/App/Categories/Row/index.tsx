@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import pathOr from "ramda/src/pathOr";
@@ -31,12 +32,9 @@ const CategoriesRow = (props: Props) => {
               >
                 <img src={pathOr("", [...props.imagesPath, "0", "url"], item)} alt=""/>
                 <div className={styles.boxOverlay}>
-                  <button
-                    type="button"
-                    onClick={() => console.log(item)}
-                  >
+                  <Link to={`/categories/${item.id}`}>
                     <FontAwesomeIcon icon={["far", "eye"]}/>
-                  </button>
+                  </Link>
                 </div>
               </div>
             ))}

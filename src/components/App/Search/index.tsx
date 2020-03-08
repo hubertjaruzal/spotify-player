@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import pathOr from "ramda/src/pathOr";
 
 import SearchRow from "./Row";
@@ -40,4 +41,13 @@ const Search = (props: Props) => {
   );
 };
 
-export default Search;
+const mapStateToProps = (state: {
+  app: appStateModel,
+}) => ({
+  app: state.app,
+});
+
+export default connect(
+  mapStateToProps,
+  null,
+)(Search);

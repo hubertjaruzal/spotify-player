@@ -29,7 +29,7 @@
       width: 100%;
       margin: 0 0 10px 0;
 
-      > button {
+      > a {
         display: flex;
         align-items: center;
         justify-content: flex-start;
@@ -42,6 +42,7 @@
         background: transparent;
         cursor: pointer;
         transition: all 0.3s ease;
+        text-decoration: none;
 
         > svg {
           margin: 0 10px 0 0;
