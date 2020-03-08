@@ -8,6 +8,10 @@
   height: 100vh;
   flex: 1;
 
+  @media #{$small-screen} {
+    flex-direction: column;
+  }
+
   .content {
     display: flex;
     flex-direction: column;
