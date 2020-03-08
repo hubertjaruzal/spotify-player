@@ -5,7 +5,7 @@ import {
   Switch,
 } from "react-router-dom";
 
-import Authorize from "../App/Authorize";
+import Authorize from "../App/Pages/Authorize";
 import App from "../App";
 
 

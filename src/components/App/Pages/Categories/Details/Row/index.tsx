@@ -6,7 +6,7 @@ import pathOr from "ramda/src/pathOr";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // Types
-import { browseStateModel } from "../../../../../models/redux/browse";
+import { browseStateModel } from "../../../../../../models/redux/browse";
 
 import styles from "./styles.module.scss";
 

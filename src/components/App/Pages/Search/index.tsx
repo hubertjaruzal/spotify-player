@@ -8,11 +8,11 @@ import SearchRow from "./Row";
 import { History, Location } from "history";
 import {
   appStateModel,
-} from "../../../models/redux/app";
-import { playerStateModel } from "../../../models/redux/player";
-import { userStateModel } from "../../../models/redux/user";
+} from "../../../../models/redux/app";
+import { playerStateModel } from "../../../../models/redux/player";
+import { userStateModel } from "../../../../models/redux/user";
 
-import styles from "./styles.module.scss";
+import styles from "../styles.module.scss";
 
 
 interface Props {

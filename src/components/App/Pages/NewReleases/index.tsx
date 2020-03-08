@@ -7,16 +7,16 @@ import NewReleasesRow from "./Row";
 
 import {
   browseGetNewReleases,
-} from "../../../redux/actions/browse";
+} from "../../../../redux/actions/browse";
 
 // Types
 import { History, Location } from "history";
 import {
   browseStateModel,
   browseGetNewReleases as browseGetNewReleasesFunction,
-} from "../../../models/redux/browse";
+} from "../../../../models/redux/browse";
 
-import styles from "./styles.module.scss";
+import styles from "../styles.module.scss";
 
 
 interface Props {

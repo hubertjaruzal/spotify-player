@@ -3,41 +3,42 @@ import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import pathOr from "ramda/src/pathOr";
 
-import { browseGetCategoryPlaylists } from "../../../../redux/actions/browse";
+import CategoriesRow from "./Row";
 
-import CategoriesDetailsRow from "./Row";
+import {
+  browseGetCategories,
+} from "../../../../redux/actions/browse";
 
 // Types
 import { History, Location } from "history";
 import {
   browseStateModel,
-  browseGetCategoryPlaylists as browseGetCategoryPlaylistsFunction,
+  browseGetCategories as browseGetCategoriesFunction,
 } from "../../../../models/redux/browse";
 
-import styles from "./styles.module.scss";
+import styles from "../styles.module.scss";
 
 
 interface Props {
-  history: History;
   location: Location;
-  match: any;
+  history: History;
   browse: browseStateModel;
-  browseGetCategoryPlaylists: browseGetCategoryPlaylistsFunction;
-}
+  browseGetCategories: browseGetCategoriesFunction;
+};
 
-const CategoriesDetails = (props: Props) => {
+const Categories = (props: Props) => {
   useEffect(() => {
-    props.browseGetCategoryPlaylists({ category_id: props.match.params.id });
+    props.browseGetCategories();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <section className={styles.container}>
-      <CategoriesDetailsRow
-        title={`Category: ${props.match.params.id}`}
-        list={pathOr([], ["browse", "category_details", "playlists", "items"], props)}
-        imagesPath={["images"]}
+      <CategoriesRow
+        title="Categories"
+        list={pathOr([], ["browse", "categories", "items"], props)}
+        imagesPath={["icons"]}
       />
     </section>
   );
@@ -51,11 +52,11 @@ const mapStateToProps = (state: {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return bindActionCreators({
-    browseGetCategoryPlaylists,
+    browseGetCategories,
   }, dispatch);
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(CategoriesDetails);
+)(Categories);

@@ -3,42 +3,41 @@ import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import pathOr from "ramda/src/pathOr";
 
-import CategoriesRow from "./Row";
+import { browseGetCategoryPlaylists } from "../../../../../redux/actions/browse";
 
-import {
-  browseGetCategories,
-} from "../../../redux/actions/browse";
+import CategoriesDetailsRow from "./Row";
 
 // Types
 import { History, Location } from "history";
 import {
   browseStateModel,
-  browseGetCategories as browseGetCategoriesFunction,
-} from "../../../models/redux/browse";
+  browseGetCategoryPlaylists as browseGetCategoryPlaylistsFunction,
+} from "../../../../../models/redux/browse";
 
-import styles from "./styles.module.scss";
+import styles from "../../styles.module.scss";
 
 
 interface Props {
-  location: Location;
   history: History;
+  location: Location;
+  match: any;
   browse: browseStateModel;
-  browseGetCategories: browseGetCategoriesFunction;
-};
+  browseGetCategoryPlaylists: browseGetCategoryPlaylistsFunction;
+}
 
-const Categories = (props: Props) => {
+const CategoriesDetails = (props: Props) => {
   useEffect(() => {
-    props.browseGetCategories();
+    props.browseGetCategoryPlaylists({ category_id: props.match.params.id });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <section className={styles.container}>
-      <CategoriesRow
-        title="Categories"
-        list={pathOr([], ["browse", "categories", "items"], props)}
-        imagesPath={["icons"]}
+      <CategoriesDetailsRow
+        title={`Category: ${props.match.params.id}`}
+        list={pathOr([], ["browse", "category_details", "playlists", "items"], props)}
+        imagesPath={["images"]}
       />
     </section>
   );
@@ -52,11 +51,11 @@ const mapStateToProps = (state: {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return bindActionCreators({
-    browseGetCategories,
+    browseGetCategoryPlaylists,
   }, dispatch);
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Categories);
+)(CategoriesDetails);

@@ -3,21 +3,21 @@ import { bindActionCreators, Dispatch } from "redux";
 import { connect } from "react-redux";
 import pathOr from "ramda/src/pathOr";
 
-import { getTracks } from "../../../redux/actions/tracks";
+import { getTracks } from "../../../../redux/actions/tracks";
 
-import PlayButton from "../Common/PlayButton";
+import PlayButton from "../../Common/PlayButton";
 
 // Types
 import { History, Location } from "history";
 import {
   appStateModel,
-} from "../../../models/redux/app";
+} from "../../../../models/redux/app";
 import {
   tracksStateModel,
   getTracks as getTracksFunction,
-} from "../../../models/redux/tracks";
-import { userStateModel } from "../../../models/redux/user";
-import { trackFullObject } from "../../../models/redux";
+} from "../../../../models/redux/tracks";
+import { userStateModel } from "../../../../models/redux/user";
+import { trackFullObject } from "../../../../models/redux";
 
 import styles from "./styles.module.scss";
 

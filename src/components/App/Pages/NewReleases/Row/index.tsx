@@ -5,21 +5,21 @@ import pathOr from "ramda/src/pathOr";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
-import { ReactComponent as ProfileIcon } from "../../../../assets/images/profile.svg";
+import { ReactComponent as ProfileIcon } from "../../../../../assets/images/profile.svg";
 
 import {
   playerPlay,
   playerPlayPreview,
-} from "../../../../redux/actions/player";
+} from "../../../../../redux/actions/player";
 
 // Types
 import {
   playerStateModel,
   playerPlay as playerPlayFunction,
   playerPlayPreview as playerPlayPreviewFunction,
-} from "../../../../models/redux/player";
-import { userStateModel } from "../../../../models/redux/user";
-import { newReleasesItemObject } from "../../../../models/redux";
+} from "../../../../../models/redux/player";
+import { userStateModel } from "../../../../../models/redux/user";
+import { newReleasesItemObject } from "../../../../../models/redux";
 
 import styles from "./styles.module.scss";
 

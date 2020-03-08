@@ -1,15 +1,15 @@
 import React from "react";
 import pathOr from "ramda/src/pathOr";
 
-import { ReactComponent as ProfileIcon } from "../../../../assets/images/profile.svg";
+import { ReactComponent as ProfileIcon } from "../../../../../assets/images/profile.svg";
 
-import PlayButton from "../../Common/PlayButton";
+import PlayButton from "../../../Common/PlayButton";
 
 // Types
 import {
   playerStateModel,
-} from "../../../../models/redux/player";
-import { userStateModel } from "../../../../models/redux/user";
+} from "../../../../../models/redux/player";
+import { userStateModel } from "../../../../../models/redux/user";
 
 import styles from "./styles.module.scss";
 

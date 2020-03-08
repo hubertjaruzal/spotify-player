@@ -7,11 +7,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import TopBar from "./Common/TopBar";
 import SideBar from "./Common/SideBar";
 import BottomBar from "./Common/BottomBar";
-import Search from "./Search";
-import Categories from "./Categories";
-import NewReleases from "./NewReleases";
-import CategoriesDetails from "./Categories/Details";
-import Tracks from "./Tracks";
+import Search from "./Pages/Search";
+import Categories from "./Pages/Categories";
+import NewReleases from "./Pages/NewReleases";
+import CategoriesDetails from "./Pages/Categories/Details";
+import Tracks from "./Pages/Tracks";
 
 import { doesAccessTokenExist } from "../../services/common";
 import { removeTokenFromLocalStorage } from "../../services/api";

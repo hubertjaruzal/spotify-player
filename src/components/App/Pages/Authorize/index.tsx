@@ -4,17 +4,17 @@ import { bindActionCreators, Dispatch } from "redux";
 import queryString from "query-string";
 import propOr from "ramda/src/propOr";
 
-import { ReactComponent as LogoIcon } from "../../../assets/images/logo.svg";
+import { ReactComponent as LogoIcon } from "../../../../assets/images/logo.svg";
 
-import { authorize } from "../../../redux/actions/authorization";
+import { authorize } from "../../../../redux/actions/authorization";
 
 // Types
 import { History, Location } from "history";
-import { doesAccessTokenExist } from "../../../services/common";
+import { doesAccessTokenExist } from "../../../../services/common";
 import {
   authorizationStateModel,
   authorize as authorizeFunction,
-} from "../../../models/redux/authorization";
+} from "../../../../models/redux/authorization";
 
 import styles from "./styles.module.scss";
 
