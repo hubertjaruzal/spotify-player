@@ -1,8 +1,6 @@
 module.exports = {
   "extends": "react-app",
-  "plugins": [
-    "cypress",
-  ],
+  "plugins": [],
   "rules": {
     "semi": ["error", "always"],
     "quotes": ["error", "double"],
