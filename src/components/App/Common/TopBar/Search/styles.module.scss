@@ -6,6 +6,10 @@
   align-self: flex-start;
   position: relative;
 
+  @media #{$small-screen} {
+    width: 100%;
+  }
+
   > svg {
     position: absolute;
     left: 15px;
@@ -23,5 +27,9 @@
     border: none;
     outline: none;
     font-size: 14px;
+
+    @media #{$small-screen} {
+      width: 100%;
+    }
   }
 }

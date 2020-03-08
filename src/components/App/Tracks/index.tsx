@@ -20,6 +20,7 @@ import {
   playerPlay as playerPlayFunction,
   playerPlayPreview as playerPlayPreviewFunction,
 } from "../../../models/redux/player";
+import { trackFullObject } from "../../../models/redux";
 
 import styles from "./styles.module.scss";
 
@@ -48,8 +49,8 @@ const Tracks = (props: Props) => {
   return (
     <section className={styles.container}>
       <ul>
-        {props.tracks.items.map((item: any) => (
-          <li>
+        {props.tracks.items.map((item: trackFullObject) => (
+          <li key={item.id}>
             {props.user.product === "premium" &&
               <button
                 type="button"

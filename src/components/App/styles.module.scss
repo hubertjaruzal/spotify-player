@@ -13,8 +13,15 @@
     flex-direction: column;
     flex: 1;
     position: relative;
+    height: 100vh;
+    width: 100vw;
     max-height: calc(100vh - 90px);
     max-width: calc(100vw - 230px);
+
+    @media #{$small-screen} {
+      max-width: 100vw;
+      max-height: calc(100vh - 150px);
+    }
   }
 
   .loader {
