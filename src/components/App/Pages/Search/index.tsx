@@ -24,7 +24,7 @@ interface Props {
 };
 
 const Search = (props: Props) => {
-  const noResult = () => (
+  const noResults = () => (
     !pathOr([], ["app", "search", "albums", "items"], props).length &&
     !pathOr([], ["app", "search", "artists", "items"], props).length &&
     !pathOr([], ["app", "search", "tracks", "items"], props).length
@@ -53,7 +53,7 @@ const Search = (props: Props) => {
         player={props.player}
         user={props.user}
       />
-      {noResult() &&
+      {noResults() &&
         <span className={styles.noResults}>No Results</span>
       }
     </section>
