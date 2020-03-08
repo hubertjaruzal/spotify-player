@@ -65,7 +65,7 @@ const BottomBar = (props: Props) => {
           Your browser does not support the audio element.
         </audio>
       }
-      {(!props.player.preview_url && !props.player.is_playing) &&
+      {(!props.player.item.uri && !props.player.is_playing && !props.player.preview_url) &&
         <span>What are you waiting for? Play some track...</span>
       }
     </div>
